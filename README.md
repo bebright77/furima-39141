@@ -2,57 +2,61 @@
 
 
 ##　users_table
-| column            | type   | options     | 
-| ----------------- | ------ | ----------- | 
-| last_name(kanji)  | string | null: false | 
-| first_name(kanji) | string | null: false | 
-| last_name(kana)   | string | null: false | 
-| first_name(kana)  | string | null: false | 
-| email             | string | null: false | 
-| password          | string | null: false | 
+| column             | type    | options                   | 
+| ------------------ | ------- | ------------------------- | 
+| nickname           | string  | null: false               |
+| email              | string  | null: false, unique: true | 
+| encrypted_password | string  | null: false               |
+| last_name(kanji)   | string  | null: false               | 
+| first_name(kanji)  | string  | null: false               | 
+| last_name(kana)    | string  | null: false               | 
+| first_name(kana)   | string  | null: false               |  
+| birth              | integer | null: false               |
 
 ### Association
-- has_one :shipping_to
+- has_one :addresses
 - has_many :items
-- has_many :buying_history
+- has_many :buying_histories
 
 # items_table
-| cloumn      | type        | option                          | 
-| ----------- | ----------  |------------                     | 
-| item_name   | string      |  null: false                    | 
-| explanation | text        |  null: false                    | 
-| detail      | string      |  null: false                    | 
-| price       | integer     |  null: false                    | 
-| user_id     | references  |  null: false, foreign_key: true |
+| cloumn         | type        | option                          | 
+| -------------- | ----------  |------------                     | 
+| item_name      | string      |  null: false                    | 
+| explanation    | text        |  null: false                    | 
+| category       | string      |  null: false                    | 
+| condition      | string      |  null: false                    |
+| shipping_price | string      |  null: false                    |
+| from           | string      |  null: false                    |
+| days_to_ship   | string      |  null: false                    |
+| price          | integer     |  null: false                    | 
+| user           | references  |  null: false, foreign_key: true |
 
 ### Association
 - has_one :user
 - has_one :shipping_to
-- has_one :buying_history
+- has_one :buying_histories
 
-# shipping_to
+# addresses_table
 | cloumn            | type       | option                          | 
 | ----------------  | ---------- | ------------------------------- | 
 | postal_code       | integer    |  null: false                    |
-| address           | string     |  null: false                    |
-| phone_number      | integer    |  null: false
-| user_id           | references |  null: false, foreign_key: true | 
-| items_id          | references |  null: false, foreign_key: true | 
-| buying_history_id | references |  null: false, foreign_key: true |
+| prefectures       | string     |  null: false                    |
+| Municipality      | string     |  null: false                    |
+| address           | integer    |  null: false                    |
+| building          | integer    |  null: false                    |
+| phone_number      | integer    |  null: false                    | 
+| buying_histories  | references |  null: false, foreign_key: true |
 
 ### Association
-belongs_to :user
-has_one :item
-has_one :shipping_to
+has_one :buying_histories
 
-# buying_history
+# buying_histories_table
 | cloumn         |  type      | option                         |
 | -------------- | ---------- | ------------------------------ |
-| user_id        | references | null: false, foreign_key: true |
-| item_id        | references | null: false, foreign_key: true |
-| shipping_to_id | references | null: false, foreign_key: true |
+| user           | references | null: false, foreign_key: true |
+| item           | references | null: false, foreign_key: true |
 
 ### Association
 - belongs_to :user
 - has_one :item
-- has_one :shipping_to
+- has_one :addresses
