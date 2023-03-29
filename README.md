@@ -16,7 +16,6 @@
 ### Association
 - has_many :items
 - has_many :buying_histories
-- has_one :address
 
 # items_table
 | cloumn            | type        | option                          |
@@ -26,7 +25,7 @@
 | category_id       | integer     |  null: false                    |
 | condition_id      | integer     |  null: false                    |
 | shipping_price_id | integer     |  null: false                    |
-| from_id           | integer     |  null: false                    |
+| sender_id         | integer     |  null: false                    |
 | days_to_ship_id   | integer     |  null: false                    |
 | price             | integer     |  null: false                    | 
 | user              | references  |  null: false, foreign_key: true |
@@ -51,7 +50,7 @@
 | cloumn            | type       | option                          | 
 | ----------------  | ---------- | ------------------------------- | 
 | postal_code       | string     |  null: false                    |
-| from_id           | integer    |  null: false                    |
+| sender_id         | integer    |  null: false                    |
 | municipality      | string     |  null: false                    |
 | address           | string     |  null: false                    |
 | building          | string     |                                 |
