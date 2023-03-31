@@ -57,5 +57,12 @@
 | phone_number      | string     |  null: false                    | 
 | buying_history    | references |  null: false, foreign_key: true |
 
+<<<<<<< Updated upstream
 ### Association
 belongs_to :buying_history
+=======
+* Deployment instructions
+
+* ...
+
+>>>>>>> Stashed changes
