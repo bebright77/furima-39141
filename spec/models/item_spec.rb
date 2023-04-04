@@ -22,27 +22,27 @@ RSpec.describe Item, type: :model do
         expect(@item.errors.full_messages).to include("Explanation can't be blank")
       end
       it "カテゴリーが空では出品できない" do
-        @item.category = ''
+        @item.category_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Category can't be blank")
       end  
       it "商品の状態が空では出品できない" do
-        @item.condition = ''
+        @item.condition_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Condition can't be blank")
       end
       it "送料が空では出品できない" do
-        @item.shipping_price = ''
+        @item.shipping_price_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Shipping price can't be blank")
       end
       it "発送元が空では出品できない" do
-        @item.sender = ''
+        @item.sender_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Sender can't be blank")
       end
       it "発送までの日数が空では出品できない" do
-        @item.days_to_ship = ''
+        @item.days_to_ship_id = ''
         @item.valid?
         expect(@item.errors.full_messages).to include("Days to ship can't be blank")
       end
@@ -54,17 +54,17 @@ RSpec.describe Item, type: :model do
       it "価格が300円未満では出品できない" do
         @item.price = '299'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is too cheep(minimum is 300yen)")
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
       it "価格が10,000,000では出品できない" do
-        @item.price = '1000000'
+        @item.price = '100000000'
         @item.valid?
-        expect(@item.errors.full_messages).to include("Price is too expesive(maximum is 9,999,999yen)")
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
       it "全角では価格が登録できない" do
         @item.price = '１０００'
         @item.valid?
-        expect(@item.errors.full_messages).to include('Price is not included in the list')
+        expect(@item.errors.full_messages).to include("Price is not included in the list")
       end
     end
   end
