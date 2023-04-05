@@ -4,7 +4,7 @@ class Item < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :category
-  belongs_to :Condition
+  belongs_to :condition
   belongs_to :shipping_price
   belongs_to :days_to_ship
   belongs_to :sender  
