@@ -28,31 +28,31 @@ RSpec.describe OrderAddress, type: :model do
     it "郵便番号が空では保存ができないこと" do
       @order_address.postal_code = nil
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Postal code can't be blank")
+      expect(@order_address.errors.full_messages).to include("Postal code が無効です。ハイフンを入れてください")
     end
 
     it "郵便番号がハイフンなしでは保存ができないこと" do
       @order_address.postal_code = "1234567"
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      expect(@order_address.errors.full_messages).to include("Postal code が無効です。ハイフンを入れてください")
     end
 
     it "郵便番号は前半が3桁でなければ保存ができないこと" do
       @order_address.postal_code = "1234-4567"
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      expect(@order_address.errors.full_messages).to include("Postal code が無効です。ハイフンを入れてください")
     end
 
     it "郵便番号は後半が4桁でなければ保存ができないこと" do
       @order_address.postal_code = "123-45678"
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Postal code is invalid. Include hyphen(-)")
+      expect(@order_address.errors.full_messages).to include("Postal code が無効です。ハイフンを入れてください")
     end
 
     it "都道府県が「---」が選択されているときは保存ができないこと" do
       @order_address.sender_id = 1
       @order_address.valid?
-      expect(@order_address.errors.full_messages).to include("Sender can't be blank")
+      expect(@order_address.errors.full_messages).to include("Sender を選択してください")
     end
 
     it "市区町村が空では保存ができないこと" do

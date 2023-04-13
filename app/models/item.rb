@@ -19,9 +19,9 @@ class Item < ApplicationRecord
   validates :sender_id,         presence: true
   validates :days_to_ship_id,   presence: true
   validates :price,             presence: true, numericality: {only_integer: true}, inclusion: { in: 300..9999999 }
-  validates :category_id,       numericality: { other_than: 1 , message: "can't be blank"}
-  validates :condition_id,      numericality: { other_than: 1 , message: "can't be blank"}
-  validates :days_to_ship_id,   numericality: { other_than: 1 , message: "can't be blank"}
-  validates :sender_id,         numericality: { other_than: 1 , message: "can't be blank"}
-  validates :shipping_price_id, numericality: { other_than: 1 , message: "can't be blank"}
+  validates :category_id,       numericality: { other_than: 1 , message: "を選択してください"}
+  validates :condition_id,      numericality: { other_than: 1 , message: "を選択してください"}
+  validates :days_to_ship_id,   numericality: { other_than: 1 , message: "を選択してください"}
+  validates :sender_id,         numericality: { other_than: 1 , message: "を選択してください"}
+  validates :shipping_price_id, numericality: { other_than: 1 , message: "を選択してください"}
 end
