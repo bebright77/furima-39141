@@ -7,7 +7,6 @@ class BuyingHistoriesController < ApplicationController
   end
 
   def create
-
     @order_address = OrderAddress.new(order_address_params)
     if @order_address.valid?
       pay_item
